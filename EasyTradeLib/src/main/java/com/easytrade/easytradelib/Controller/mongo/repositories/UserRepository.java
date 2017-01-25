@@ -1,4 +1,4 @@
-package com.easytrade.easytradelib.Controller.mongo;
+package com.easytrade.easytradelib.Controller.mongo.repositories;
 
 /**
  * Created by muzcategui1106 on 1/24/2017.

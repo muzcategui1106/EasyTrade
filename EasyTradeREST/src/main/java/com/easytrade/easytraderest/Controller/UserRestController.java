@@ -23,11 +23,7 @@ public class UserRestController  {
     @RequestMapping(method = RequestMethod.PUT, value = "/create")
     public ResponseEntity<User> createUser(@RequestBody User user) throws JSONException {
         try {
-            user = userController.createUser(user.getAddress(),
-                    user.getCountry(),
-                    user.getFirstName(),
-                    user.getMiddleName(),
-                    user.getZipCode());
+            user = userController.createUser(user);
         }
         catch (Exception e){
             return new ResponseEntity<User>((User) null, HttpStatus.INTERNAL_SERVER_ERROR);

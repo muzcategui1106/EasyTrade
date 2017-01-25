@@ -5,9 +5,9 @@ import org.springframework.data.annotation.Id;
 /**
  * Created by muzcategui1106 on 1/23/2017.
  */
-public class User {
+public class User implements MongoObject {
     @Id
-    private long  id;
+    private String id;
     private String address;
     private String country;
     private String firstName;
@@ -51,11 +51,11 @@ public class User {
         this.firstName = firstName;
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
