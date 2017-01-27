@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
- * Created by Sofy on 1/25/2017.
+ * Created by muzcategui1106 on 1/25/2017.
  */
 
 @RunWith(SpringRunner.class)

@@ -1,7 +1,7 @@
 package com.easytrade.easytradelib.Exception;
 
 /**
- * Created by Sofy on 1/24/2017.
+ * Created by muzcategui1106 on 1/24/2017.
  */
 public class EasyTradeLibException extends Exception {
     @Override

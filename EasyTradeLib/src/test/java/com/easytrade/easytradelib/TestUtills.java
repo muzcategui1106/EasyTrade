@@ -4,7 +4,7 @@ import java.io.File;
 import java.nio.file.Files;
 
 /**
- * Created by Sofy on 1/25/2017.
+ * Created by muzcategui1106 on 1/25/2017.
  */
 public class TestUtills {
     public static String getJSONFromFile(String fileName) throws Exception {

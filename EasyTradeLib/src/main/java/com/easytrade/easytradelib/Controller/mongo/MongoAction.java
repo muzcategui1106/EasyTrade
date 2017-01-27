@@ -11,7 +11,7 @@ import javax.inject.Inject;
 import java.util.List;
 
 /**
- * Created by Sofy on 1/24/2017.
+ * Created by muzcategui1106 on 1/24/2017.
  */
 @Component
 public class MongoAction {
@@ -44,6 +44,7 @@ public class MongoAction {
     private String generateObjectId(MongoRepository repository) throws IdGenerationException {
         boolean idCreated = false;
         String id = "";
+        // try to create a unique id for MAX_CREATION_TRIALS
         for (int i = 0; i <= MAX_CREATION_TRIALS; i++) {
             id = Long.toString((long) Math.floor(Math.random() * 1000000000));
             // check that id is unique across users
@@ -61,10 +62,24 @@ public class MongoAction {
         return id;
     }
 
+    /**
+     * Return a single Object
+     *
+     * @param repository
+     * @param mongoObject
+     * @return MongoObject
+     */
     public MongoObject getObjectById(MongoRepository repository, MongoObject mongoObject) {
         return (MongoObject) mongoController.getObjectById(repository, mongoObject);
     }
 
+    /**
+     * Returns a List of MongoObjects
+     * @param repository
+     * @param type
+     * @param <T>
+     * @return List<MongoObject>
+     */
     public <T extends MongoObject> List<T> getAllObjects(MongoRepository repository, Class<T> type) {
         return mongoController.getAllObjects(repository, type);
     }

@@ -34,7 +34,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
- * Created by Sofy on 1/25/2017.
+ * Created by muzcategui1106 on 1/25/2017.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {EasyTradeRestApplication.class, MongoConfigTest.class})

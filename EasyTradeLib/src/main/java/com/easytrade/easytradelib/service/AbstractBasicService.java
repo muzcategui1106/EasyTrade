@@ -9,7 +9,7 @@ import javax.inject.Inject;
 import java.util.List;
 
 /**
- * Created by Sofy on 1/25/2017.
+ * Created by muzcategui1106 on 1/25/2017.
  */
 public abstract class AbstractBasicService {
     private MongoRepository repository;
