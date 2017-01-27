@@ -15,11 +15,12 @@ public class User implements MongoObject {
     private String middleName;
     private String zipCode;
 
-    public User(String address, String country, String firstName, String middleName, String zipCode) {
+    public User(String firstName, String middleName, String lastName, String address, String country, String zipCode) {
         this.address = address;
         this.country = country;
         this.firstName = firstName;
         this.middleName = middleName;
+        this.lastName = lastName;
         this.zipCode = zipCode;
     }
 

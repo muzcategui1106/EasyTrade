@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Component;
 
 import javax.inject.Inject;
+import java.util.List;
 
 /**
  * Created by Sofy on 1/24/2017.
@@ -19,6 +20,14 @@ public class MongoAction {
     @Inject
     private MongoController mongoController;
 
+    /**
+     * Creates a mongo object. Returns the same object with the id field populated
+     *
+     * @param repository
+     * @param mongoObject
+     * @return MongoObject with Id field populated
+     * @throws IdGenerationException
+     */
     public MongoObject createObject(MongoRepository repository, MongoObject mongoObject) throws IdGenerationException {
         ObjectMapper mapper = new ObjectMapper();
         String id = this.generateObjectId(repository);
@@ -50,5 +59,13 @@ public class MongoAction {
             throw new IdGenerationException();
         }
         return id;
+    }
+
+    public MongoObject getObjectById(MongoRepository repository, MongoObject mongoObject) {
+        return (MongoObject) mongoController.getObjectById(repository, mongoObject);
+    }
+
+    public <T extends MongoObject> List<T> getAllObjects(MongoRepository repository, Class<T> type) {
+        return mongoController.getAllObjects(repository, type);
     }
 }
