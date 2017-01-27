@@ -1,6 +1,6 @@
 package com.easytrade.easytraderest.Controller;
 
-import com.easytrade.easytradelib.Controller.AbstractController;
+import com.easytrade.easytradelib.service.AbstractBasicService;
 import com.easytrade.easytradelib.Exception.IdGenerationException;
 import com.easytrade.easytradelib.model.MongoObject;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -13,21 +13,21 @@ import java.util.List;
  * Created by Sofy on 1/25/2017.
  */
 public abstract class CommonRestController {
-    private AbstractController controller;
+    private AbstractBasicService service;
     private Class type;
 
-    public AbstractController getController() {
-        return controller;
+    public AbstractBasicService getService() {
+        return service;
     }
 
-    public void setController(AbstractController controller) {
-        this.controller = controller;
+    public void setService(AbstractBasicService service) {
+        this.service = service;
     }
 
     public <T extends MongoObject> ResponseEntity<T> create(T object) {
         ObjectMapper mapper = new ObjectMapper();
         try {
-            object = this.controller.create(object);
+            object = this.service.create(object);
         } catch (IdGenerationException e) {
             return new ResponseEntity<T>((T) null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -36,11 +36,11 @@ public abstract class CommonRestController {
     }
 
     public <T extends MongoObject> ResponseEntity<T> getById(T object) {
-        object = this.controller.getById(object);
+        object = this.service.getById(object);
         return new ResponseEntity<T>(object, HttpStatus.OK);
     }
 
     public <T extends MongoObject> ResponseEntity<List<T>> getAll(Class<T> type) {
-        return new ResponseEntity<List<T>>(this.controller.getAll(type), HttpStatus.OK);
+        return new ResponseEntity<List<T>>(this.service.getAll(type), HttpStatus.OK);
     }
 }

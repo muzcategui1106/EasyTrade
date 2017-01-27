@@ -1,6 +1,6 @@
 package com.easytrade.easytraderest.Controller;
 
-import com.easytrade.easytradelib.Controller.UserController;
+import com.easytrade.easytradelib.service.UserService;
 import com.easytrade.easytradelib.Controller.mongo.MongoConfigTest;
 import com.easytrade.easytradelib.Exception.IdGenerationException;
 import com.easytrade.easytradelib.TestUtills;
@@ -47,9 +47,9 @@ public class UserRestControllerTest {
     @Inject
     private WebApplicationContext ctx;
     @Inject
-    private UserController userController;
+    private UserService userService;
     @InjectMocks
-    private UserController userControllerMock = Mockito.mock(UserController.class);
+    private UserService userServiceMock = Mockito.mock(UserService.class);
     @Inject
     UserRestController restController;
 
@@ -61,9 +61,9 @@ public class UserRestControllerTest {
         ObjectMapper mapper = new ObjectMapper();
         User user1 = mapper.readValue(TestUtills.getJSONFromFile("first-person.json"), User.class);
         User user2 = mapper.readValue(TestUtills.getJSONFromFile("second-person.json"), User.class);
-        restController.setController(userControllerMock);
-        userController.create(user1);
-        userController.create(user2);
+        restController.setService(userServiceMock);
+        userService.create(user1);
+        userService.create(user2);
     }
 
     @Configuration
@@ -81,7 +81,7 @@ public class UserRestControllerTest {
         ObjectMapper mapper = new ObjectMapper();
         User user1 = new User("test", "", "1", "", "", "");
         // do not mock this one we are using fongo anyways
-        restController.setController(userController);
+        restController.setService(userService);
         MvcResult result = mockMvc.perform(put("/api/user/create")
                 .contentType(contentType)
                 .content(mapper.writeValueAsString(user1)))
@@ -97,7 +97,7 @@ public class UserRestControllerTest {
         ObjectMapper mapper = new ObjectMapper();
         User user1 = new User("test", "", "1", "", "", "");
         User user2 = new User("test2", "", "1", "", "", "");
-        when(userControllerMock.create(Mockito.anyObject())).thenThrow(IdGenerationException.class);
+        when(userServiceMock.create(Mockito.anyObject())).thenThrow(IdGenerationException.class);
         MvcResult result = mockMvc.perform(put("/api/user/create")
                 .contentType(contentType)
                 .content(mapper.writeValueAsString(user1)))

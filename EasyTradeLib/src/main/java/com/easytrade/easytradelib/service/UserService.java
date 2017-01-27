@@ -1,4 +1,4 @@
-package com.easytrade.easytradelib.Controller;
+package com.easytrade.easytradelib.service;
 
 import com.easytrade.easytradelib.Controller.mongo.repositories.UserRepository;
 import org.springframework.stereotype.Component;
@@ -11,7 +11,7 @@ import javax.inject.Inject;
  * Created by muzcategui1106 on 1/23/2017.
  */
 @Component
-public class UserController extends AbstractController {
+public class UserService extends AbstractBasicService {
     @Inject
     private UserRepository userRepository;
 

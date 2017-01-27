@@ -1,4 +1,4 @@
-package com.easytrade.easytradelib.Controller;
+package com.easytrade.easytradelib.service;
 
 import com.easytrade.easytradelib.Controller.mongo.MongoAction;
 import com.easytrade.easytradelib.Exception.IdGenerationException;
@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by Sofy on 1/25/2017.
  */
-public abstract class AbstractController {
+public abstract class AbstractBasicService {
     private MongoRepository repository;
     @Inject
     private MongoAction mongoAction;
@@ -28,13 +28,10 @@ public abstract class AbstractController {
         return (T) mongoAction.createObject(repository, object);
     }
 
-    ;
-
     public <T extends MongoObject> T getById(T object) {
         return (T) mongoAction.getObjectById(repository, object);
     }
 
-    ;
 
     public <T extends MongoObject> List<T> getAll(Class<T> type) {
         return (List<T>) mongoAction.getAllObjects(repository, type);

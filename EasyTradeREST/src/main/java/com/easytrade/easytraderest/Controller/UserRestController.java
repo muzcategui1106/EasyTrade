@@ -1,6 +1,6 @@
 package com.easytrade.easytraderest.Controller;
 
-import com.easytrade.easytradelib.Controller.UserController;
+import com.easytrade.easytradelib.service.UserService;
 import com.easytrade.easytradelib.model.User;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,11 +17,11 @@ import java.util.List;
 public class UserRestController extends CommonRestController {
 
     @Inject
-    private UserController userController;
+    private UserService userService;
 
     @PostConstruct
     public void init() {
-        super.setController(userController);
+        super.setService(userService);
     }
 
     @ResponseBody
