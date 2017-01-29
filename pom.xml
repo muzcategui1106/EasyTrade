@@ -3,18 +3,18 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.easytrade</groupId>
-	<artifactId>easytrade</artifactId>
+    <groupId>com.tennismaniac</groupId>
+    <artifactId>tennismaniac</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
-	<name>EasyTrade</name>
-	<description>Applciation to trade anything</description>
+    <name>TennisManiac</name>
+    <description>Application for Tennis players</description>
 
 	<modules>
-		<module>EasyTradeWeb</module>
-		<module>EasyTradeREST</module>
-		<module>EasyTradeLib</module>
+        <module>TennisManiacLib</module>
+        <module>TennisManiacREST</module>
+        <module>TennisManiacWeb</module>
 	</modules>
 
 	<properties>
